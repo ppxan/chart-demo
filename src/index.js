@@ -13,43 +13,31 @@ class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      colors: "#fff",
+        colorIndex:0,
+        colors : ["deepskyblue","#0f0","#00f"],
       data: [5, 20, 36, 10, 10, 20]
     }
   }
 
-  changeClock() {
-    if (this.state.colors === '#fff') {
-      this.setState({
-        colors: "green"
-      })
-    }
-    else {
-      this.setState({
-        colors: "fff"
-      })
-    }
+  changeClock(msg) {
+    this.setState({
+        color:msg
+    })
   }
 
-  changeChart() {
-    if (this.state.data[0] === 5) {
-      this.setState({
-        data: [10, 20, 30, 40, 50, 60]
-      })
-    }
-    else {
-      this.setState({
-        data: [5, 20, 36, 10, 10, 20]
-      })
-    }
+  changeChart(msg) {
+    this.setState({
+        data:msg
+    })
   }
   render(){
     return (
       <div className='big-container'>
-        < MyTimeComponent className="time-left" color={this.state.colors} onClick={this.changeClock.bind(this)}></MyTimeComponent>
-        <EchartsTest className="chart-right" data={this.state.data} onClick={this.changeChart.bind(this)}></EchartsTest>
+        <MyTimeComponent className="time-left" color={this.state.color} listener={this.changeChart.bind(this)}></MyTimeComponent>
+        <EchartsTest className="chart-right" data={this.state.data} listener={this.changeClock.bind(this)}></EchartsTest>
       </div>
     );
+
   }
 
 }

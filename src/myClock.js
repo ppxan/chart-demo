@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './clock.css';
 
-class MyTimeComponent extends React.Component {
-  constructor() {
+export default class MyTimeComponent extends React.Component {
+  constructor(props) {
     super();
     this.state = {
       time: new Date(),
-      color: "#fff"
+      color: props.color
     };
     setInterval(() => {
       this.setState({
@@ -28,14 +28,15 @@ class MyTimeComponent extends React.Component {
     },1000)
   }
 
-
   a (b) {
     if (b < 10) {
       return ('0' + b.toString());
     }
     return (b.toString());
   }
-
+  listener(){
+    this.props.listener([Math.random(),Math.random(),Math.random(),Math.random(),Math.random()])
+  }
   c (start, end, angle){
     angle = angle - Math.PI / 2
     this.ctx.moveTo(start * Math.cos(angle) + 40, start * Math.sin(angle) + 40)
@@ -55,7 +56,7 @@ class MyTimeComponent extends React.Component {
             北京时间-国家授时中心标准时间
           </a>
         </h3>
-        <div className="bg-box">
+        <div className="bg-box" style={{backgroundColor:this.props.color}} onClick={ this.listener.bind(this)}>
           <canvas className="clock" width={80} height={80} ref="canvas">
           </canvas>
           <p className="bg-time" onClick={this.click.bind(this)}>
@@ -70,4 +71,3 @@ class MyTimeComponent extends React.Component {
     );
   }
 }
-export default MyTimeComponent;

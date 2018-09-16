@@ -9,27 +9,56 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
 class EchartsTest extends React.Component {
-  componentDidMount() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    // 绘制图表
-    myChart.setOption({
-      title: { text: 'ECharts 入门示例' },
-      tooltip: {},
-      xAxis: {
-        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-      },
-      yAxis: {},
-      series: [{
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
-      }]
-    });
+  constructor(props){
+      super();
+      this.state = {
+      data: props.data
+    }
   }
+    componentDidMount() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 绘制图表
+        myChart.setOption({
+            title: { text: 'ECharts 入门示例' },
+            tooltip: {},
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: this.state.data
+            }]
+        });
+    }
+    componentWillReceiveProps(props) {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 绘制图表
+        myChart.setOption({
+            title: { text: 'ECharts 入门示例' },
+            tooltip: {},
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: props.data
+            }]
+        });
+    }
+    listener(){
+    this.props.listener('#'+Math.round(Math.random()*0xFFF).toString(16));
+}
   render() {
     return (
-      <div id="main" style={{ width: 400, height: 400 }}></div>
+      <div id="main" style={{ width: 400, height: 400 }} onClick={this.listener.bind(this)}>
+
+      </div>
     );
   }
 }
