@@ -1,0 +1,50 @@
+
+.container{
+    width: 538px;
+    font-size: 14px;
+}
+.bg-box{
+    padding: 10px;
+    display: -webkit-flex;
+    display: flex;
+    left:0;
+    top:0;
+    background-color: deepskyblue;
+    width: 480px;
+    height: 80px;
+    color: #ffffff;
+}
+.bg-bottom{
+    margin-bottom: 5px;
+}
+.clock{
+    display:flex;
+    flex-direction: column;
+}
+.bg-time{
+    display:flex;
+    flex-direction: column;
+    font-size: 55px;
+    width: 228px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+p,h3{
+    margin: 0;
+    padding:0;
+}
+div{
+    display:block;
+}
+.bg-week{
+    text-align: left;
+    font-size: 20px;
+    margin-top: 15px;
+}
+.bg-week:hover{
+    font-size:30px;
+}
+.bg-data{
+    font-size: 15px;
+}
