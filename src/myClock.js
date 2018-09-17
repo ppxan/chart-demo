@@ -63,8 +63,8 @@ export default class MyTimeComponent extends React.Component {
             {this.a(this.state.time.getHours())}:{this.a(this.state.time.getMinutes())}:{this.a(this.state.time.getSeconds())}
           </p>
           <div>
-            <p className="bg-week">星期天</p>
-            <p className="bg-data">2018年9月16号</p>
+            <p className="bg-week">星期一</p>
+            <p className="bg-data">2018年9月17号</p>
           </div>
         </div>
       </div>
